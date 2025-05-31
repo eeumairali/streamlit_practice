@@ -1,5 +1,6 @@
 import streamlit as st
-
+import pandas as pd
+df = pd.read_csv('df.csv')
 
 # text display elements
 
@@ -73,3 +74,31 @@ st.line_chart(y)
 st.bar_chart(y)
 st.area_chart(y)
 # ### plotting elements done
+
+
+
+# buttons and widgets
+
+
+primary_button = st.button("Click Me",type="primary", help="This is a primary button")
+seoncd_button = st.button("Click Me Too", type="secondary", help="This is a secondary button")
+# checkbox divider
+st.divider()
+checkbox = st.checkbox("Check Me", value=True, help="This is a checkbox")
+
+if checkbox:
+    st.write("Checkbox is checked")
+else:
+    st.write("Checkbox is unchecked")
+
+# radio button
+radio = st.radio("Select Year", options=df.columns[1:], horizontal=True, index=0, help="This is a radio button")
+
+st.divider()
+# selectbox
+
+select = st.selectbox("Select Year", options=df.columns[1:], index=0, help="This is a selectbox")
+
+# multiselect
+multiselect = st.multiselect("Select Years", options=df.columns[1:], default=[df.columns[1]], help="This is a multiselect")
+
